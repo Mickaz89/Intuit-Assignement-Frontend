@@ -1,8 +1,9 @@
 import React from 'react';
-import { products } from '../data';
+import { products } from '../utils/data';
 import { useAppSelector } from '../redux/hooks';
 import { Product } from '../types';
 import ProductItem from './components/ProductItem';
+import { Link } from 'react-router-dom';
 
 const Products: React.FC = () => {
     const { counter } = useAppSelector((state) => state.cart);
@@ -17,9 +18,9 @@ const Products: React.FC = () => {
             </div>
             <div className="fixed bottom-0 left-0 flex justify-center w-full">
                 {counter > 0 && (
-                    <button className="bg-green-500 text-white py-2 hover:bg-green-600 w-full text-center">
+                    <Link to="/checkout" className="bg-green-500 text-white py-2 hover:bg-green-600 w-full text-center">
                         Go to Checkout ({counter} items)
-                    </button>
+                    </Link>
                 )}
             </div>
         </div>
