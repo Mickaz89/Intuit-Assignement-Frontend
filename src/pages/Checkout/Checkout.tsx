@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import { CheckoutComponent, fsm, mapStateToComponent } from '../../utils/checkoutConfig';
-import { steps } from '../../utils/steps';
-import Cart from './components/Cart';
-import Shipping from './components/Shipping';
-import Review from './components/Review';
 import StepsContainer from '../../components/StepsContainer';
 
 import styles from '../../styles/Checkout.module.css';

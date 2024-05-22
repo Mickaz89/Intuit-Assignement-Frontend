@@ -6,14 +6,14 @@ interface ReviewProps {
     handleNext?: () => void;
 }
 
-const Review: React.FC<ReviewProps> = ({ handleBack, handleNext }) => {
+const Complete: React.FC<ReviewProps> = ({ handleBack }) => {
 
     return (
         <div>
-            <h2>Review</h2>
-            <Footer handleBack={handleBack} handleNext={handleNext} />
+            <h2>Complete</h2>
+            <Footer handleBack={handleBack} />
         </div>
     );
 };
 
-export default Review;
+export default Complete;

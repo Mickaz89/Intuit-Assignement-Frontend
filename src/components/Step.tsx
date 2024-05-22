@@ -1,7 +1,8 @@
 import React from 'react';
-import { steps } from '../utils/steps';
+import { steps } from '../utils/checkoutConfig';
 
 import styles from '../styles/Step.module.css';
+
 
 const Step: React.FC<{ currentStep: string, step: string }> = ({ currentStep, step }) => (
     <div className={styles.step}>
