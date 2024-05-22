@@ -2,7 +2,6 @@ import React from 'react';
 import Step from './Step';
 import { steps } from '../utils/checkoutConfig';
 
-
 import styles from '../styles/StepsContainer.module.css'
 
 

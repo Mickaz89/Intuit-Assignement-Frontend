@@ -2,14 +2,23 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Item, Product } from '../../types'
 
+interface ShippingInfo {
+  name: string;
+  address: string;
+  city: string;
+  phoneNumber: string;
+}
+
 interface CartState {
   items: Item[]
-  counter: number
+  counter: number,
+  shippingInfo: ShippingInfo | null;
 }
 
 const initialState: CartState = {
   items: [],
-  counter: 0
+  counter: 0,
+  shippingInfo: null,
 }
 
 export const cartSlice = createSlice({
@@ -64,10 +73,13 @@ export const cartSlice = createSlice({
       if (existingItem && existingItem.quantity === 0) {
         state.items = state.items.filter(item => item.id !== action.payload);
       }
-    }
+    },
+    setShippingInfo: (state, action: PayloadAction<ShippingInfo>) => {
+      state.shippingInfo = action.payload;
+    },
   },
 });
 
-export const { addItem , incrementItem, decrementItem} = cartSlice.actions
+export const { addItem , incrementItem, decrementItem, setShippingInfo} = cartSlice.actions
 
 export default cartSlice.reducer

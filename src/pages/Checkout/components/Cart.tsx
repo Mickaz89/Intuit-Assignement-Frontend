@@ -21,9 +21,9 @@ const Cart: React.FC<CartProps> = ({ handleNext }) => {
                 {cartItems.map((item: Item) => (
                     <div key={item.id} className="flex items-start justify-between p-2 border-b border-gray-200">
                         <img src={item.image} alt={item.name} className="w-20 h-20 object-cover mr-4" />
-                        <div className="flex flex-col justify-between mr-4">
-                            <p className="font-bold">{item.name}</p>
-                            <p>{item.price * item.quantity}</p>
+                        <div className="flex flex-col justify-between flex-grow ml-5">
+                            <p className="font-bold overflow-hidden text-overflow-ellipsis whitespace-nowrap">{item.name}</p>
+                            <p>{item.price * item.quantity} $</p>
                         </div>
                         <div className="flex items-center">
                             <button
