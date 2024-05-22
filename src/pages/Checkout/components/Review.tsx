@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from './Footer';
 import { useAppSelector } from '../../../redux/hooks';
+import ItemsList from './ItemsList';
 
 interface ReviewProps {
     handleBack?: () => void;
@@ -16,7 +17,7 @@ const Review: React.FC<ReviewProps> = ({ handleBack, handleNext }) => {
 
     return (
         <div>
-            <h2>Review</h2>
+            <ItemsList showCounter={false} />
             <p>Name: {shippingInfo.name}</p>
             <p>Address: {shippingInfo.address}</p>
             <p>City: {shippingInfo.city}</p>
