@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fsm } from '../../utils/checkoutConfig';
+import { CheckoutComponent, fsm, mapStateToComponent } from '../../utils/checkoutConfig';
 import { steps } from '../../utils/steps';
 import Cart from './components/Cart';
 import Shipping from './components/Shipping';
@@ -11,6 +11,8 @@ import styles from '../../styles/Checkout.module.css';
 
 const Checkout: React.FC = () => {
     const [state, setState] = useState<string>(fsm.getState());
+
+    const Component: CheckoutComponent = mapStateToComponent[state];
 
 
     const handleNext = () => {
@@ -27,9 +29,7 @@ const Checkout: React.FC = () => {
         <div className={styles.container}>
             <StepsContainer currentStep={state} />
             <div className={styles.modal}>
-                {state === 'cart' && <Cart handleNext={handleNext} />}
-                {state === 'shipping' && <Shipping handleBack={handleBack} handleNext={handleNext} />}
-                {state === 'review' && <Review handleBack={handleBack} />}
+                <Component handleBack={handleBack} handleNext={handleNext} />
             </div>
         </div>
     );
