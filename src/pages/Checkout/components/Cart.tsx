@@ -2,8 +2,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { Item } from '../../../types';
 import { decrementItem, incrementItem } from '../../../redux/slices/cartSlice';
-import { fsm } from '../../../utils/checkoutConfig';
-import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 
 interface CartProps {
     handleBack?: () => void;
@@ -11,16 +10,10 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ handleNext }) => {
-    const navigate = useNavigate();
 
     const dispatch = useAppDispatch()
 
     const cartItems = useAppSelector((state) => state.cart.items)
-
-    const handleCancel = () => {
-        fsm.dispatch('cancel');
-        navigate('/');
-    }
 
     return (
         <div>
@@ -50,18 +43,7 @@ const Cart: React.FC<CartProps> = ({ handleNext }) => {
                     </div>
                 ))}
             </div>
-            <div className={'flex justify-between mt-6'}>
-                <button onClick={handleCancel} className={`px-4 py-2 rounded text-white bg-red-500`}>Cancel</button>
-                <div>
-                    <button
-                        onClick={handleNext}
-                        disabled={!handleNext}
-                        className={`px-4 py-2 rounded text-white bg-gray-500 mr-2 ${!handleNext ? 'opacity-50 cursor-not-allowed' : ''}`}
-                    >
-                        Next
-                    </button>
-                </div>
-            </div>
+            <Footer handleNext={handleNext} />
         </div>
     );
 };
