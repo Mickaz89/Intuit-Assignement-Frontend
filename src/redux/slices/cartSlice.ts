@@ -26,50 +26,35 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Product>) => {
-      // Check if the item is already in the cart
       const existingItem = state.items.find(item => item.id === action.payload.id);
 
       if (existingItem) {
-        // If the item is already in the cart, increment the quantity
-        existingItem.quantity += 1;
-        // Update the total
-        existingItem.total = existingItem.price * existingItem.quantity;
+        updateItem(existingItem, 1);
       } else {
-        // If the item is not in the cart, add it with a quantity of 1
         state.items.push({
           ...action.payload,
           quantity: 1,
-          total: action.payload.price, // Since quantity is 1, total is equal to the price
+          total: action.payload.price,
         });
       }
       state.counter += 1;
     },
     incrementItem: (state, action: PayloadAction<number>) => {
-      // Find the item in the cart
       const existingItem = state.items.find(item => item.id === action.payload);
 
       if (existingItem) {
-        // If the item is in the cart, increment the quantity
-        existingItem.quantity += 1;
-        // Update the total
-        existingItem.total = existingItem.price * existingItem.quantity;
-        // Update the counter
+        updateItem(existingItem, 1);
         state.counter += 1;
       }
     },
     decrementItem: (state, action: PayloadAction<number>) => {
-      // Find the item in the cart
       const existingItem = state.items.find(item => item.id === action.payload);
 
       if (existingItem && existingItem.quantity > 0) {
-        // If the item is in the cart and the quantity is greater than 0, decrement the quantity
-        existingItem.quantity -= 1;
-        // Update the total
-        existingItem.total = existingItem.price * existingItem.quantity;
-        // Update the counter
+        updateItem(existingItem, -1);
         state.counter -= 1;
       }
-      // If the quantity is 0, remove the item from the cart
+
       if (existingItem && existingItem.quantity === 0) {
         state.items = state.items.filter(item => item.id !== action.payload);
       }
@@ -77,9 +62,19 @@ export const cartSlice = createSlice({
     setShippingInfo: (state, action: PayloadAction<ShippingInfo>) => {
       state.shippingInfo = action.payload;
     },
+    resetCart: (state) => {
+      state.items = [];
+      state.counter = 0;
+      state.shippingInfo = null;
+    }
   },
 });
 
-export const { addItem , incrementItem, decrementItem, setShippingInfo} = cartSlice.actions
+const updateItem = (item: Item, quantityChange: number) => {
+  item.quantity += quantityChange;
+  item.total = item.price * item.quantity;
+};
+
+export const { addItem , incrementItem, decrementItem, setShippingInfo, resetCart} = cartSlice.actions
 
 export default cartSlice.reducer

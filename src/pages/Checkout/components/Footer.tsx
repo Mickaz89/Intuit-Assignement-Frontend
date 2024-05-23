@@ -7,9 +7,10 @@ import styles from '../../../styles/Footer.module.css';
 interface ReviewProps {
     handleBack?: () => void;
     handleNext?: () => void;
+    showCancel: boolean;
 }
 
-const Footer: React.FC<ReviewProps> = ({ handleBack, handleNext }) => {
+const Footer: React.FC<ReviewProps> = ({ handleBack, handleNext, showCancel }) => {
     const navigate = useNavigate();
 
     const handleCancel = () => {
@@ -20,7 +21,9 @@ const Footer: React.FC<ReviewProps> = ({ handleBack, handleNext }) => {
     return (
         <div>
             <div className={styles['button-container']}>
-                <button onClick={handleCancel} className={`${styles.button} ${styles['button-red']}`}>Cancel</button>
+                <div className={`${showCancel ? '' : 'opacity-0'} ${styles.button} ${styles['button-red']}`}>
+                    {showCancel && <button onClick={handleCancel}>Cancel</button>}
+                </div>
                 <div>
                     <button
                         onClick={handleBack}

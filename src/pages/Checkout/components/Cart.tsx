@@ -12,7 +12,7 @@ const Cart: React.FC<CartProps> = ({ handleNext }) => {
     return (
         <>
             <ItemsList showCounter={true}/>
-            <Footer handleNext={handleNext} />
+            <Footer showCancel handleNext={handleNext} />
         </>
     );
 };

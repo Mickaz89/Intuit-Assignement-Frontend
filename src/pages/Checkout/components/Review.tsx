@@ -18,11 +18,25 @@ const Review: React.FC<ReviewProps> = ({ handleBack, handleNext }) => {
     return (
         <div>
             <ItemsList showCounter={false} />
-            <p>Name: {shippingInfo.name}</p>
-            <p>Address: {shippingInfo.address}</p>
-            <p>City: {shippingInfo.city}</p>
-            <p>Phone: {shippingInfo.phoneNumber}</p>
-            <Footer handleBack={handleBack} handleNext={handleNext} />
+            <div className='p-2'>
+                <div className='flex justify-between'>
+                    <p>Name:</p>
+                    <p>{shippingInfo.name}</p>
+                </div>
+                <div className='flex justify-between'>
+                    <p>Address:</p>
+                    <p>{shippingInfo.address}</p>
+                </div>
+                <div className='flex justify-between'>
+                    <p>City:</p>
+                    <p>{shippingInfo.city}</p>
+                </div>
+                <div className='flex justify-between'>
+                    <p>Phone:</p>
+                    <p>{shippingInfo.phoneNumber}</p>
+                </div>
+            </div>
+            <Footer showCancel handleBack={handleBack} handleNext={handleNext} />
         </div>
     );
 };

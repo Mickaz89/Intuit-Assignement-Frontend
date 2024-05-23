@@ -33,7 +33,7 @@ const Shipping: React.FC<ShippingProps> = ({ handleBack, handleNext }) => {
             <TextField type='text' value={city} onChange={e => setCity(e.target.value)} placeholder='City' />
             <TextField type='phone' value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} placeholder='Phone' />
 
-            <Footer handleBack={handleBack} handleNext={handleNextClick} />
+            <Footer showCancel handleBack={handleBack} handleNext={handleNextClick} />
         </>
     );
 };
