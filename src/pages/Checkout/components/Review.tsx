@@ -1,7 +1,7 @@
 import React from 'react';
-import Footer from './Footer';
+import Footer from '../../../components/Footer';
 import { useAppSelector } from '../../../redux/hooks';
-import ItemsList from './ItemsList';
+import ItemsList from '../../../components/ItemsList';
 
 interface ReviewProps {
     handleBack?: () => void;

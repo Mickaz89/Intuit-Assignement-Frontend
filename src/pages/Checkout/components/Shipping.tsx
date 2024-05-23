@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Footer from './Footer';
+import Footer from '../../../components/Footer';
 import TextField from '../../../components/TextField';
 import { useDispatch } from 'react-redux';
 import { setShippingInfo } from '../../../redux/slices/cartSlice';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckoutComponent, fsm, mapStateToComponent } from '../../utils/checkoutConfig';
+import { StepComponentType, fsm, mapStateToComponent } from '../../utils/checkoutConfig';
 import StepsContainer from '../../components/StepsContainer';
 
 import styles from '../../styles/Checkout.module.css';
@@ -8,7 +8,7 @@ import styles from '../../styles/Checkout.module.css';
 const Checkout: React.FC = () => {
     const [state, setState] = useState<string>(fsm.getState());
 
-    const Component: CheckoutComponent = mapStateToComponent[state];
+    const StepComponent: StepComponentType = mapStateToComponent[state];
 
 
     const handleNext = () => {
@@ -25,7 +25,7 @@ const Checkout: React.FC = () => {
         <div className={styles.container}>
             <StepsContainer currentStep={state} />
             <div className={styles.modal}>
-                <Component handleBack={handleBack} handleNext={handleNext} />
+                <StepComponent handleBack={handleBack} handleNext={handleNext} />
             </div>
         </div>
     );

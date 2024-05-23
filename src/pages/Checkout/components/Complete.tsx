@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './Footer';
+import Footer from '../../../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { fsm } from '../../../utils/checkoutConfig';
 import { useAppDispatch } from '../../../redux/hooks';

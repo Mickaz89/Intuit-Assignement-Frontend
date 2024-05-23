@@ -5,7 +5,7 @@ import Shipping from '../pages/Checkout/components/Shipping';
 import Review from '../pages/Checkout/components/Review';
 import Complete from '../pages/Checkout/components/Complete';
 
-export type CheckoutComponent = React.FC<{
+export type StepComponentType = React.FC<{
   handleBack?: () => void;
   handleNext?: () => void;
 }>;
@@ -45,7 +45,7 @@ export const states = {
 
 export const steps = Object.keys(states);
 
-export const mapStateToComponent: Record<string, CheckoutComponent> = {
+export const mapStateToComponent: Record<string, StepComponentType> = {
   'cart': Cart,
   'shipping': Shipping,
   'review': Review,

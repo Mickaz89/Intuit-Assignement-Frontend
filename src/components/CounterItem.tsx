@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { decrementItem, incrementItem } from '../../redux/slices/cartSlice';
-import { Item, Product } from '../../types';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { decrementItem, incrementItem } from '../redux/slices/cartSlice';
+import { Item, Product } from '../types';
 
 const CounterItem: React.FC<{ product: Product}> = ({ product }) => {
 
@@ -18,7 +18,7 @@ const CounterItem: React.FC<{ product: Product}> = ({ product }) => {
                 -
             </button>
             <div className="w-1/2 text-center py-2">
-                {items.find((item: Item) => item.id === product.id)?.quantity || 0}
+                {items.find((item: Product) => item.id === product.id)?.quantity || 0}
             </div>
             <button
                 onClick={() => dispatch(incrementItem(product.id))}

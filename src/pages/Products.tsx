@@ -2,7 +2,7 @@ import React from 'react';
 import { products } from '../utils/data';
 import { useAppSelector } from '../redux/hooks';
 import { Product } from '../types';
-import ProductItem from './components/ProductItem';
+import ProductItem from '../components/ProductItem';
 import { Link } from 'react-router-dom';
 
 const Products: React.FC = () => {

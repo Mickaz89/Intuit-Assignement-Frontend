@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Item } from '../../../types';
-import { decrementItem, incrementItem } from '../../../redux/slices/cartSlice';
-import { useAppSelector } from '../../../redux/hooks';
+import { Item } from '../types';
+import { decrementItem, incrementItem } from '../redux/slices/cartSlice';
+import { useAppSelector } from '../redux/hooks';
 
 
 interface ItemsListProps {
@@ -15,7 +15,7 @@ const ItemsList: React.FC<ItemsListProps> = ({ showCounter = false }) => {
     const items: Item[] = useAppSelector((state) => state.cart.items)
 
     return (
-        <div className="overflow-auto m-h-64 ">
+        <div className="overflow-auto max-h-72">
             {items.map((item: Item) => (
                 <div key={item.id} className="flex items-start justify-between p-2 border-b border-gray-200">
                     <img src={item.image} alt={item.name} className="w-20 h-20 object-cover mr-4" />

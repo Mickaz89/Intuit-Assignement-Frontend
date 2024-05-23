@@ -1,16 +1,16 @@
 
 import React from 'react';
-import { Item, Product } from '../../types';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { Item, Product } from '../types';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import CounterItem from './CounterItem';
-import { addItem } from '../../redux/slices/cartSlice';
+import { addItem } from '../redux/slices/cartSlice';
 
 const ProductItem: React.FC<{ product: Product }> = ({ product }) => {
     const dispatch = useAppDispatch();
 
     const { items } = useAppSelector((state) => state.cart)
 
-    const isProductInCart = items.some((item: Item) => item.id === product.id);
+    const isProductInCart = items.some((item: Product) => item.id === product.id);
 
     return (
         <div key={product.id} className="flex flex-col border p-4 rounded-lg shadow hover:shadow-lg transition duration-300 h-full">
