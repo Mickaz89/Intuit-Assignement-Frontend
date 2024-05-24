@@ -1,7 +1,9 @@
 import React from 'react';
 import Footer from '../../../components/Footer';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import ItemsList from '../../../components/ItemsList';
+import { createOrder } from '../../../redux/slices/orderSlice';
+
 
 interface ReviewProps {
     handleBack?: () => void;
@@ -9,7 +11,15 @@ interface ReviewProps {
 }
 
 const Review: React.FC<ReviewProps> = ({ handleBack, handleNext }) => {
+    const dispatch = useAppDispatch();
     const { shippingInfo } = useAppSelector((state) => state.cart);
+
+    const handleNextClick = () => {
+        dispatch(createOrder());
+        if (handleNext) {
+            handleNext();
+        }
+    };
 
     if (!shippingInfo) {
         return <div>No shipping information</div>;
@@ -36,7 +46,7 @@ const Review: React.FC<ReviewProps> = ({ handleBack, handleNext }) => {
                     <p>{shippingInfo.phoneNumber}</p>
                 </div>
             </div>
-            <Footer showCancel handleBack={handleBack} handleNext={handleNext} />
+            <Footer showCancel handleBack={handleBack} handleNext={handleNextClick} />
         </div>
     );
 };

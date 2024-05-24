@@ -10,10 +10,10 @@ const ProductItem: React.FC<{ product: Product }> = ({ product }) => {
 
     const { items } = useAppSelector((state) => state.cart)
 
-    const isProductInCart = items.some((item: Product) => item.id === product.id);
+    const isProductInCart = items.some((item: Product) => item._id === product._id);
 
     return (
-        <div key={product.id} className="flex flex-col border p-4 rounded-lg shadow hover:shadow-lg transition duration-300 h-full">
+        <div key={product._id} className="flex flex-col border p-4 rounded-lg shadow hover:shadow-lg transition duration-300 h-full">
             <img src={product.image} alt={product.name} className="w-full h-32 object-cover rounded-t-lg" />
             <div className="mt-4 flex-grow">
                 <h2 className="text-xl font-semibold">{product.name}</h2>

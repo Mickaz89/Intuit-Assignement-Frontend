@@ -12,16 +12,16 @@ const CounterItem: React.FC<{ product: Product}> = ({ product }) => {
     return (
         <div className="flex justify-between items-center">
             <button
-                onClick={() => dispatch(decrementItem(product.id))}
+                onClick={() => dispatch(decrementItem(product._id))}
                 className="bg-blue-500 text-white py-2 px-2 rounded-lg mt-2 w-1/4 hover:bg-blue-600"
             >
                 -
             </button>
             <div className="w-1/2 text-center py-2">
-                {items.find((item: Product) => item.id === product.id)?.quantity || 0}
+                {items.find((item: Product) => item._id === product._id)?.quantity || 0}
             </div>
             <button
-                onClick={() => dispatch(incrementItem(product.id))}
+                onClick={() => dispatch(incrementItem(product._id))}
                 className="bg-blue-500 text-white py-2 px-2 rounded-lg mt-2 w-1/4 hover:bg-blue-600"
             >
                 +

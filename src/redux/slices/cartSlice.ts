@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Item, Product } from '../../types'
+import { AppDispatch, RootState } from '../store';
+import axios from 'axios';
+
+const apiURL = process.env.REACT_APP_API_URL;
 
 interface ShippingInfo {
-  name: string;
+  name: string ;
   address: string;
   city: string;
   phoneNumber: string;
@@ -13,12 +17,14 @@ interface CartState {
   items: Item[]
   counter: number,
   shippingInfo: ShippingInfo | null;
+  total: number
 }
 
 const initialState: CartState = {
   items: [],
   counter: 0,
   shippingInfo: null,
+  total: 0
 }
 
 export const cartSlice = createSlice({
@@ -26,7 +32,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Product>) => {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+      const existingItem = state.items.find(item => item._id === action.payload._id);
 
       if (existingItem) {
         updateItem(existingItem, 1);
@@ -38,17 +44,19 @@ export const cartSlice = createSlice({
         });
       }
       state.counter += 1;
+      state.total = calculateTotal(state.items);
     },
-    incrementItem: (state, action: PayloadAction<number>) => {
-      const existingItem = state.items.find(item => item.id === action.payload);
+    incrementItem: (state, action: PayloadAction<string>) => {
+      const existingItem = state.items.find(item => item._id === action.payload);
 
       if (existingItem) {
         updateItem(existingItem, 1);
         state.counter += 1;
       }
+      state.total = calculateTotal(state.items);
     },
-    decrementItem: (state, action: PayloadAction<number>) => {
-      const existingItem = state.items.find(item => item.id === action.payload);
+    decrementItem: (state, action: PayloadAction<string>) => {
+      const existingItem = state.items.find(item => item._id === action.payload);
 
       if (existingItem && existingItem.quantity > 0) {
         updateItem(existingItem, -1);
@@ -56,11 +64,20 @@ export const cartSlice = createSlice({
       }
 
       if (existingItem && existingItem.quantity === 0) {
-        state.items = state.items.filter(item => item.id !== action.payload);
+        state.items = state.items.filter(item => item._id !== action.payload);
       }
+      state.total = calculateTotal(state.items);
     },
     setShippingInfo: (state, action: PayloadAction<ShippingInfo>) => {
-      state.shippingInfo = action.payload;
+      state.shippingInfo = {
+        name: '',
+        address: '',
+        city: '',
+        phoneNumber: '',
+        ...Object.fromEntries(
+          Object.entries(action.payload).map(([key, value]) => [key, value === '' ? null : value])
+        ),
+      };
     },
     resetCart: (state) => {
       state.items = [];
@@ -73,6 +90,10 @@ export const cartSlice = createSlice({
 const updateItem = (item: Item, quantityChange: number) => {
   item.quantity += quantityChange;
   item.total = item.price * item.quantity;
+};
+
+const calculateTotal = (items: Item[]) => {
+  return items.reduce((total, item) => total + item.total, 0);
 };
 
 export const { addItem , incrementItem, decrementItem, setShippingInfo, resetCart} = cartSlice.actions

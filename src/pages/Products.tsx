@@ -25,7 +25,7 @@ const Products: React.FC = () => {
             <h1 className="text-2xl font-bold mb-4">Menu</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-16">
                 {products.map((product: Product) => (
-                    <ProductItem key={product.id} product={product} />
+                    <ProductItem key={product._id} product={product} />
                 ))}
             </div>
             <div className="fixed bottom-0 left-0 flex justify-center w-full">
