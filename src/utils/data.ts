@@ -22,7 +22,7 @@ export const products = [
     },
     {
         id: 4,
-        name: "The double",
+        name: "The Double",
         description: "Double beef, tomato, salad, cheese and onion",
         price: 8.99,
         image: "https://images.pexels.com/photos/18086478/pexels-photo-18086478/free-photo-of-burger-on-a-wooden-tray.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
