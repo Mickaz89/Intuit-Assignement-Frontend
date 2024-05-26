@@ -5,7 +5,7 @@ import Products from './pages/Products';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Products />} />
         <Route path="/checkout" element={<Checkout />} />
