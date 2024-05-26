@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "https://Mickaz89.github.io/Intuit-Assignement-Frontend",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
@@ -13,6 +14,7 @@
     "@types/react-dom": "^18.3.0",
     "axios": "^1.7.2",
     "env-cmd": "^10.1.0",
+    "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
@@ -22,6 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "env-cmd -f .env.dev npm run build",
+    "deploy": "gh-pages -d build",
     "start": "env-cmd -f .env.local react-scripts start",
     "start:dev": "env-cmd -f .env.dev react-scripts start",
     "build": "react-scripts build",

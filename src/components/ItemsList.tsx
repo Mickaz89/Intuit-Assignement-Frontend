@@ -1,8 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Item } from '../types';
-import { decrementItem, incrementItem } from '../redux/slices/cartSlice';
 import { useAppSelector } from '../redux/hooks';
+import CounterItem from './CounterItem';
 
 
 interface ItemsListProps {
@@ -10,7 +9,6 @@ interface ItemsListProps {
 }
 
 const ItemsList: React.FC<ItemsListProps> = ({ showCounter = false }) => {
-    const dispatch = useDispatch();
 
     const { items, total }: { items: Item[], total: number } = useAppSelector((state) => state.cart)
 
@@ -23,27 +21,7 @@ const ItemsList: React.FC<ItemsListProps> = ({ showCounter = false }) => {
                         <p className="font-bold overflow-hidden text-overflow-ellipsis whitespace-nowrap">{item.name}</p>
                         <p>{item.price * item.quantity} $</p>
                     </div>
-                    <div className="flex items-center">
-                        {showCounter && (
-                            <>
-                                <button
-                                    onClick={() => dispatch(decrementItem(item._id))}
-                                    className="bg-blue-500 text-white py-1 px-2 rounded-lg hover:bg-blue-600"
-                                >
-                                    -
-                                </button>
-                            </>
-                        )}
-                        <p className="mx-2">{item.quantity}</p>
-                        {showCounter && (
-                            <button
-                                onClick={() => dispatch(incrementItem(item._id))}
-                                className="bg-blue-500 text-white py-1 px-2 rounded-lg hover:bg-blue-600"
-                            >
-                                +
-                            </button>
-                        )}
-                    </div>
+                    <CounterItem product={item} isSmall showCounter={showCounter} />
                 </div>
             ))}
             <div className="mt-4 self-end text-xl font-bold mr-3">

@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Item, Product } from '../../types'
-import { AppDispatch, RootState } from '../store';
-import axios from 'axios';
-
-const apiURL = process.env.REACT_APP_API_URL;
 
 interface ShippingInfo {
   name: string ;
@@ -69,15 +65,8 @@ export const cartSlice = createSlice({
       state.total = calculateTotal(state.items);
     },
     setShippingInfo: (state, action: PayloadAction<ShippingInfo>) => {
-      state.shippingInfo = {
-        name: '',
-        address: '',
-        city: '',
-        phoneNumber: '',
-        ...Object.fromEntries(
-          Object.entries(action.payload).map(([key, value]) => [key, value === '' ? null : value])
-        ),
-      };
+      const processedShippingInfo = Object.entries(action.payload).map(([key, value]) => [key, value === '' ? null : value])
+      state.shippingInfo = Object.fromEntries(processedShippingInfo);
     },
     resetCart: (state) => {
       state.items = [];

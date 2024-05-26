@@ -1,0 +1,27 @@
+.card {
+    @apply flex flex-col border p-4 rounded-lg shadow hover:shadow-lg transition duration-300 h-full;
+}
+
+.image{
+    @apply w-full h-32 object-cover rounded-t-lg
+}
+
+.product-info{
+    @apply mt-4 flex-grow
+}
+
+.product-name{
+    @apply text-xl font-semibold
+}
+
+.product-description{
+    @apply text-gray-700
+}
+
+.product-price {
+    @apply text-green-600 font-bold
+}
+
+.button {
+    @apply bg-blue-500 text-white py-2 px-2 rounded-lg mt-2 w-full hover:bg-blue-600
+}

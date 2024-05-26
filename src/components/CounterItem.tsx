@@ -1,31 +1,43 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { decrementItem, incrementItem } from '../redux/slices/cartSlice';
-import { Item, Product } from '../types';
+import { Product } from '../types';
 
-const CounterItem: React.FC<{ product: Product}> = ({ product }) => {
+interface CounterItemProps {
+    product: Product;
+    isSmall: boolean;
+    showCounter: boolean;
+}
+
+const CounterItem: React.FC<CounterItemProps> = ({ product, isSmall, showCounter }) => {
 
     const dispatch = useAppDispatch();
 
-    const { items} = useAppSelector((state) => state.cart);
+    const { items } = useAppSelector((state) => state.cart);
+
+    const buttonClass = `bg-blue-500 text-white py-2 px-2 rounded-lg hover:bg-blue-600 ${isSmall ? '' : 'mt-2 w-1/4'}`;
 
     return (
         <div className="flex justify-between items-center">
-            <button
-                onClick={() => dispatch(decrementItem(product._id))}
-                className="bg-blue-500 text-white py-2 px-2 rounded-lg mt-2 w-1/4 hover:bg-blue-600"
-            >
-                -
-            </button>
-            <div className="w-1/2 text-center py-2">
+            {showCounter && (
+                <button
+                    onClick={() => dispatch(decrementItem(product._id))}
+                    className={buttonClass}
+                >
+                    -
+                </button>
+            )
+            }
+            <div className="w-1/2 text-center py-2 px-2">
                 {items.find((item: Product) => item._id === product._id)?.quantity || 0}
             </div>
-            <button
+            {showCounter && (<button
                 onClick={() => dispatch(incrementItem(product._id))}
-                className="bg-blue-500 text-white py-2 px-2 rounded-lg mt-2 w-1/4 hover:bg-blue-600"
+                className={buttonClass}
             >
                 +
-            </button>
+            </button>)
+            }
         </div>
     );
 };

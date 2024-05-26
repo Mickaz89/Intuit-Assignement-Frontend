@@ -2,7 +2,7 @@ import React from 'react';
 import { fsm } from '../utils/checkoutConfig';
 import { useNavigate } from "react-router-dom";
 
-import styles from '../styles/Footer.module.css';
+import styles from './styles/Footer.module.css';
 
 interface ReviewProps {
     handleBack?: () => void;
