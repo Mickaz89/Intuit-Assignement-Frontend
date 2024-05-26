@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Intuit-Assignement-Frontend/static/css/main.53b1c1a0.css",
-    "main.js": "/Intuit-Assignement-Frontend/static/js/main.2cec9119.js",
+    "main.js": "/Intuit-Assignement-Frontend/static/js/main.64e72cc4.js",
     "static/js/453.8ab44547.chunk.js": "/Intuit-Assignement-Frontend/static/js/453.8ab44547.chunk.js",
     "index.html": "/Intuit-Assignement-Frontend/index.html",
     "main.53b1c1a0.css.map": "/Intuit-Assignement-Frontend/static/css/main.53b1c1a0.css.map",
-    "main.2cec9119.js.map": "/Intuit-Assignement-Frontend/static/js/main.2cec9119.js.map",
+    "main.64e72cc4.js.map": "/Intuit-Assignement-Frontend/static/js/main.64e72cc4.js.map",
     "453.8ab44547.chunk.js.map": "/Intuit-Assignement-Frontend/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.53b1c1a0.css",
-    "static/js/main.2cec9119.js"
+    "static/js/main.64e72cc4.js"
   ]
 }
