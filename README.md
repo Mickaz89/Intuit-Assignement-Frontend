@@ -17,6 +17,7 @@ The FSM manages the order checkout process:
 
 ## Tech
 - React
+- Redux
 - TypeScript
 - Tailwind CSS
 
