@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { AppDispatch, RootState } from '../store';
-import axios from 'axios';
 import { Product } from '../../types';
+import axiosInstance from '../../utils/axiosInstance';
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -47,7 +47,7 @@ export const fetchProducts = () => async (dispatch: AppDispatch, getState: () =>
     try {
         let url = `${apiURL}/product`
 
-        const response = await axios.get(url);
+        const response = await axiosInstance.get(url);
         dispatch(fetchProductsSuccess(response.data));
     } catch (error) {
         if (error instanceof Error) {

@@ -184,7 +184,7 @@ const config: Config.InitialOptions = {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: [
-    "/node_modules/(?!axios).+\\.js$"
+    "/node_modules/(?!(@bundled-es-modules|axios)).+\\.js$"
   ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

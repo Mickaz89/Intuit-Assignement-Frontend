@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { AppDispatch, RootState } from '../store';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosInstance';
+
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -64,7 +65,7 @@ export const createOrder = () => async (dispatch: AppDispatch, getState: () => R
         }
         // Add a delay before sending the request
         await new Promise(resolve => setTimeout(resolve, 2000));
-        const response = await axios.post(url, data);
+        const response = await axiosInstance.post(url, data);
         dispatch(orderCreateSuccess(response.data._id));
     } catch (error) {
         if (error instanceof Error) {
