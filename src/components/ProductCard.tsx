@@ -20,7 +20,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             <div className={styles['product-info']}>
                 <h2 className={styles['product-name']}>{product.name}</h2>
                 <p className={styles['product-description']}>{product.description}</p>
-                <p className={styles['product-price']}>{product.price}</p>
+                <p className={styles['product-price']}>{product.price} $</p>
             </div>
             {isProductInCart ? (
                 <CounterItem product={product} isSmall={false} showCounter />

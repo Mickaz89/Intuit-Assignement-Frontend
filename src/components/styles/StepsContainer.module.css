@@ -1,9 +1,9 @@
 .step-container {
-    @apply flex items-center justify-between mb-6 w-full max-w-md relative;
+    @apply flex items-center justify-center mb-6 relative w-full sm:w-96 md:w-full md:max-w-md;
 }
 
 .line {
-    @apply flex-1 border-t border-gray-500 mx-2;
+    @apply flex-none border-t border-gray-500 mx-2 w-8 md:w-24;
 }
 
 .line-blue {

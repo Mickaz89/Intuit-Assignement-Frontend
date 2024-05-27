@@ -1,9 +1,8 @@
 .container {
-    @apply flex flex-col items-center min-h-screen bg-gray-100 pt-20 ;
-    min-width: 100vw;
+    @apply flex flex-col items-center min-h-screen bg-gray-100 pt-20;
+
 }
 
 .modal {
-    @apply bg-white p-6 rounded shadow-lg w-[500px] mt-12;
+    @apply bg-white p-6 rounded shadow-lg w-full mt-12 sm:w-[450px];
 }
-
