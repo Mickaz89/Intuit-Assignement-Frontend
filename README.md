@@ -4,16 +4,16 @@ This React application represents a basic restaurant app, featuring a product li
 ## Features
 - Product List: Display of products with details and images.
 - Responsive Design: Seamless adaptation to various screen sizes.
-- Product Details Modal: View detailed information and add items to the cart.
+- Cart management: Add items to the cart, increment or decrement quantity.
 - FSM Checkout Process: Illustration of FSM in handling order states.
 
 ## FSM Usage
 The FSM manages the order checkout process:
 
-- Select Items: Users add items to their cart.
-- Review Cart: Users review items before checkout.
-- Enter Payment: Users input payment details.
-- Order Confirmation: Users confirm and receive a confirmation message.
+- Cart: Users can see and edit items to their cart.
+- Shipping: Users fill shipping informations form.
+- Review: Users review their order.
+- Complete: Users confirm and receive a confirmation message.
 
 ## Tech
 - React
