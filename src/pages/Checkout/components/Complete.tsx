@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../../../components/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fsm } from '../../../utils/checkoutConfig';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { resetCart } from '../../../redux/slices/cartSlice';
@@ -25,7 +25,12 @@ const Complete: React.FC<ReviewProps> = ({ handleBack }) => {
     }
 
     if (loading) return <Loading />;
-    if(error) return <Error error={error} />;
+    if(error) return (
+     <>
+        <Error error={error} />
+        <button onClick={handleBackToShop} className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Back to shop</button>
+     </>
+    );
 
     return (
         <div>
