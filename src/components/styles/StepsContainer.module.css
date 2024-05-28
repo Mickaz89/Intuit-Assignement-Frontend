@@ -3,7 +3,7 @@
 }
 
 .line {
-    @apply flex-none border-t border-gray-500 mx-2 w-8 md:w-24;
+    @apply flex-none border-t border-gray-500 mx-2 w-14 md:w-24;
 }
 
 .line-blue {
