@@ -1,20 +1,5 @@
-interface StateTransition {
-    target: string;
-  }
+import { States } from "./interfaces";
 
-  interface StateTransitions {
-    [key: string]: StateTransition ;
-  }
-
-  interface State {
-    on: StateTransitions;
-  }
-
-  interface States {
-    [key: string]: State;
-  }
-
-// Define a Finite State Machine (FSM) class
 class FSM {
   private currentState: string;
   private states: States;
